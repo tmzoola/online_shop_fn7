@@ -112,14 +112,11 @@ class OrderView(View):
 
 
 
-        try:
-            order = Order()
-            order.order_id = uuid.uuid4()
-            order.total_price = total
-            order.user = request.user
-            order.save()
-        except:
-            raise ValidationError("Order modeliga saqlashdagi xatolik")
+        order = Order()
+        order.order_id = uuid.uuid4()
+        order.total_price = total
+        order.user = request.user
+        order.save()
 
         try:
             for item_data in all_orders:

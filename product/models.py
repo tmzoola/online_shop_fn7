@@ -36,7 +36,7 @@ class Product(BaseModel):
 class Order(BaseModel):
     order_id= models.CharField(unique=True, max_length=50)
     order_date = models.DateField(auto_now_add=True)
-    total_price = models.DecimalField(max_digits=6, decimal_places=2)
+    total_price = models.IntegerField()
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
     def __str__(self):
