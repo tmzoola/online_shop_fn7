@@ -45,6 +45,8 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'login_page' %}">Log in</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'register_page' %}">Register</a></li>
                         {% endif %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'product:get_orders' %}">My Orders</a></li>
+
                     </ul>
                     <form class="d-flex">
                         <a class="btn btn-outline-dark" type="submit" href="{% url 'product:cart_summary' %}">

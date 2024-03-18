@@ -1,5 +1,6 @@
 import uuid
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView,DetailView
 from .models import Product,Category,Order,OrderItem
@@ -134,3 +135,19 @@ class OrderView(View):
         cart.clear_cart()
 
         return redirect('product:index')
+
+
+class GetOrdersView(LoginRequiredMixin,View):
+
+    def get(self, request):
+        user = request.user
+
+        orders = user.orders.all()
+
+        data = {
+            "orders":orders
+        }
+
+        return render(request, 'product/orders.html', context=data)
+
+
